@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOME</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" th:href="@{css/styles.css}">
+</head>
+<body>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<form
+        id="generateForm"
+        method="post"
+        th:action="@{/generateId}">
+    <div style="width: 100%;  align-items: center">
+
+        <label>
+            Wprowadź URL:
+        </label>
+        <input type="text" name="url" id="url">
+    </div>
+    <div style="text-align: center">
+
+        <button class="btn btn-success" id="buttonGen" type="submit">
+            Generuj ID
+        </button>
+    </div>
+</form>
+
+<form
+        id="findForm"
+        method="post"
+        th:action="@{/findId}">
+    <div style="width: 100%;  align-items: center">
+        <label>
+            Wprowadź ID:
+        </label>
+        <input type="text" name="id" id="id">
+    </div>
+    <div style="text-align: center">
+
+        <button class="btn btn-success" id="buttonID" type="submit">
+            Znajdź URL
+        </button>
+    </div>
+</form>
+
+
+
+</body>
+</html>
