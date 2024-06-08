@@ -3,11 +3,11 @@ package com.example.rozproszenie.controllers;
 import com.example.rozproszenie.interfaces.GeneratorService;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Date;
 
 @RestController
 public class GenController extends HttpServlet {
@@ -25,7 +25,7 @@ public class GenController extends HttpServlet {
     }
 
     @PostMapping("/generateId")
-    public ModelAndView generateId(@RequestParam String url){
+    public ModelAndView generateId(@RequestParam String url) {
         ModelAndView mv = new ModelAndView();
         Long id = generatorService.getId(url);
         mv.addObject("id",id.toString());
@@ -33,4 +33,13 @@ public class GenController extends HttpServlet {
         return mv;
     }
 
+    @DeleteMapping("/byLastUsageDate")
+    public HttpStatus deleteByLastUsageDate(@RequestParam Date date) {
+       return generatorService.deleteUrlByLastUsageDate(date);
+    }
+
+    @DeleteMapping("/deleteUrlByCreationDateOnCassandra")
+    public HttpStatus deleteUrlByCreationDateOnCassandra(@RequestParam String genId) {
+        return generatorService.deleteUrlByCreationDateOnCassandra(genId);
+    }
 }
