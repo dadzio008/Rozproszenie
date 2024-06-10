@@ -11,5 +11,4 @@ public interface Repo extends JpaRepository<Generator,Long> {
 //    void deleteAllByDate(Date date);
     void deleteAllByLastUsageDate(Date date);
 
-    void deleteUrlByCreationDate(String genId);
 }
